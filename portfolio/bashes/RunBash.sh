@@ -1,0 +1,1 @@
+gunicorn --bind :8001 portfolio.wsgi:application --reload

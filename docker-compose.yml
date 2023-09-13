@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    container_name: portfolio_web
+    command: bash ./bashes/RunBash.sh
+    restart: always
+    volumes:
+      - .:/portfolio/src
+      - static_volume:/portfolio/static
+      - media_volume:/portfolio/media
+    depends_on:
+      - postgres_db
+    networks:
+      - portfolio_network
+      
+  nginx:
+    image: pagespeed/nginx-pagespeed:latest
+    container_name: portfolio_nginx
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/portfolio/static
+      - media_volume:/portfolio/media
+    ports:
+      - 8001:80
+    depends_on:
+      - web
+    networks:
+      - portfolio_network
+  
+  postgres_db:
+    image: postgres:10-alpine
+    container_name: portfolio_postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=portfoliosecret
+      - POSTGRES_DB=portfolio
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks:
+      - portfolio_network
+    
+
+networks:
+  portfolio_network:
+    driver: bridge
+
+volumes:
+  static_volume:
+  media_volume:
+  postgres:
