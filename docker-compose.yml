@@ -14,6 +14,8 @@ services:
       - postgres_db
     networks:
       - portfolio_network
+    env_file:
+      - ./.env
       
   nginx:
     image: pagespeed/nginx-pagespeed:latest
