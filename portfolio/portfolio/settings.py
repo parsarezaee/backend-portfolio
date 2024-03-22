@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'portfo.apps.PortfoConfig'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +84,7 @@ DATABASES = {
         'NAME': 'portfolio',
         'USER': 'root',
         'PASSWORD': 'portfoliosecret',
-        'HOST': 'postgres_db',
+        'HOST': 'db',
         'PORT': '5432'
     }
 }
@@ -123,12 +125,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-STATIC_URL = '/static/'
+STATIC_URL = os.path.join(BASE_DIR, 'static/')
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'portfolio', 'static'),]
-STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'portfolio', 'static'),]
+# STATIC_ROOT = "/static/"
 
-MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
+# MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

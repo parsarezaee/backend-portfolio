@@ -14,7 +14,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 ADD ../ /portfolio/src  
 WORKDIR /portfolio/src/portfolio
 
-RUN python3 manage.py collectstatic --no-input -v 2
 
-EXPOSE 8001
 
