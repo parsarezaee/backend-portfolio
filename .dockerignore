@@ -1,0 +1,4 @@
+postgres_data/
+postgres_data/*
+static_volume/*
+media_colume/*

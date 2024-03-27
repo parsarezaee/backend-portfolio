@@ -14,5 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 ADD ../ /portfolio/src  
 WORKDIR /portfolio/src/portfolio
 
+RUN python manage.py collectstatic --noinput
+
 
 
