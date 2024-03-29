@@ -21,6 +21,9 @@ postgres/
 /postgres/*
 postgres_data/
 /postgres_data/*
+portfolio_data/
+portfolio_data/*
+
 redis_data/
 redis_data/*
 # mongo-api/
