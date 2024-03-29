@@ -16,5 +16,4 @@ WORKDIR /portfolio/src/portfolio
 
 RUN python manage.py collectstatic --noinput
 
-
-
+EXPOSE 8001

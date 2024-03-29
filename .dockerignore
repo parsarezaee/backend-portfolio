@@ -2,3 +2,5 @@ postgres_data/
 postgres_data/*
 static_volume/*
 media_colume/*
+portfolio_data/*
+portfolio_data/
